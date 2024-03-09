@@ -1,6 +1,7 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import { ObjectId } from "mongodb";
+import cors from "cors";
 
 const app = express();
 const PORT = 4000;
@@ -12,7 +13,8 @@ const client = new MongoClient(url);
 await client.connect();
 console.log("Database Connected Successfully");
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 
 app.get("/", function (req, res) {
   res.send("Hello World!");
